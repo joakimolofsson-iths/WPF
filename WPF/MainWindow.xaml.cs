@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace WPF
 {
@@ -19,6 +20,26 @@ namespace WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ButtonAddEmail_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtName.Text) && !names.Items.Contains(txtName.Text))
+            {
+                string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                bool isEmail = Regex.IsMatch(txtName.Text, emailPattern);
+
+                if(isEmail)
+                {
+                    names.Items.Add(txtName.Text);
+                    errorText.Text = "Valid E-Mail";
+                    txtName.Clear();
+                }
+                else
+                {
+                    errorText.Text = "Invalid E-Mail";
+                }
+            }
         }
     }
 }

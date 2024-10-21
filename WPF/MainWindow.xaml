@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Names" Height="200" Width="300">
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0">Names</Label>
+        <TextBlock x:Name="errorText" Grid.Column="1"/>
+        <ListBox Grid.Row="1" x:Name="names"></ListBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
+            <TextBox x:Name="txtName" />
+            <Button x:Name="btnAdd" Margin="0,5,0,0" Click="ButtonAddEmail_Click">Add Email</Button>
+        </StackPanel>
     </Grid>
+    
 </Window>
